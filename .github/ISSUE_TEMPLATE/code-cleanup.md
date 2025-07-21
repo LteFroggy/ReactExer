@@ -1,5 +1,5 @@
 ---
-name: "코드 정리"
+name: "🧹 코드 정리"
 about: "불필요한 코드 제거, 스타일 정리, 네이밍 수정 등의 정리를 요청합니다."
 title: "[CLEANUP] "
 labels: ["cleanup"]

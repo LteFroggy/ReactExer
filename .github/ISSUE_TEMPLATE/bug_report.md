@@ -1,5 +1,5 @@
 ---
-name: "버그 리포트"
+name: "🐞 버그 리포트"
 about: "버그가 발생했을 때 작성하는 템플릿입니다."
 title: "[BUG] "
 labels: ["bug"]

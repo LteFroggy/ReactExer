@@ -1,5 +1,5 @@
 ---
-name: "기능 개발"
+name: "⚙️ 기능 개발"
 about: "새로운 기능이 필요할 때 사용하는 템플릿입니다."
 title: "[FEAT] "
 labels: ["feat"]

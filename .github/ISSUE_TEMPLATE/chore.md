@@ -1,5 +1,5 @@
 ---
-name: "🛠 Chore"
+name: "🛠 개발 환경 설정"
 about: "CI/CD 설정, 의존성 업데이트, 기타 개발 환경 설정을 위한 작업 요청"
 title: "[CHORE] 작업 개요를 적어주세요"
 labels: ["chore"]
