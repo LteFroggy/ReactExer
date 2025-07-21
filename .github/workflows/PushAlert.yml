@@ -1,0 +1,17 @@
+name: Discord Webhook on Push
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Webhook
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"content":"🚀 `${{ github.ref_name }}` 브랜치에 코드가 푸시되었습니다!"}' \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
