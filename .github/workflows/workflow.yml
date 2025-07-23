@@ -15,9 +15,10 @@ jobs:
 
       - name: Mac의 SSH에 접속 후 파일 생성하기
         run: |
-          ssh -o StrictHostKeyChecking=no -i ./keypair.pem ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com
-          
+          ssh -o StrictHostKeyChecking=no -i ./keypair.pem ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com \
+          << EOF
           cd ~/
           echo $(pwd)
           mkdir madeByGithubActions
           echo $(ls)
+          EOF
