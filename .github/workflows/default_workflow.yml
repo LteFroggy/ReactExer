@@ -1,14 +1,24 @@
-name: 2. Mac SSH 파일 복사
+name: default workflow
 on:
-  workflow_run:
-    workflows: ["빌드가 잘 되는지 테스트"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 레포지토리 복사
+        uses: actions/checkout@v3
+
+      - name: 정상 작동 여부 확인을 위한 빌드
+        run: |
+          cd moodbook-app
+          npm install
+          npm run build
+
   ssh_test:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
       - name: EC2 키 생성하기

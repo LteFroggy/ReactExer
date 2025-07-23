@@ -1,10 +1,10 @@
 # Github UI에서 표시될 워크플로우 이름
-name: 3. Discord Webhook on Push
+name: 디스코드 웹훅 전송
 
 # 이벤트 트리거 설정
 on:
   workflow_run:
-    workflows: ["Mac SSH 파일 복사"]
+    workflows: ["default workflow"]
     types:
       - completed
 
