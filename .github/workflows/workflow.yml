@@ -8,13 +8,18 @@ jobs:
   ssh_test:
     runs-on: ubuntu-latest
     steps:
+      - name: EC2 키 생성하기
+        run : |
+          echo ${{ secrets.EC2_SSH_KEY }} > ./keypair.pem
+          chmod 400 ./keypair.pem
+
       - name: Mac의 SSH에 접속 시도하기
         run: |
-          ssh -i ${{ secrets.EC2_SSH_KEY }} ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com
+          ssh -i ./keypair.pem ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com
 
       - name: 경로 이동 후 폴더 만들기
         run: |
           cd ~/
+          pwd
           mkdir madeByGithubActions
-
-
+          ls
