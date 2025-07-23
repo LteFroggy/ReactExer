@@ -13,13 +13,11 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ./keypair.pem
           chmod 400 ./keypair.pem
 
-      - name: Mac의 SSH에 접속 시도하기
+      - name: Mac의 SSH에 접속 후 파일 생성하기
         run: |
           ssh -o StrictHostKeyChecking=no -i ./keypair.pem ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com
-
-      - name: 경로 이동 후 폴더 만들기
-        run: |
+          
           cd ~/
-          pwd
+          echo $(pwd)
           mkdir madeByGithubActions
-          ls
+          echo $(ls)
