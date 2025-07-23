@@ -7,6 +7,8 @@ on:
 
 jobs:
   ssh_test:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
     runs-on: ubuntu-latest
     steps:
       - name: EC2 키 생성하기

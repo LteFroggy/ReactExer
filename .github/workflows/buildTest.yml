@@ -13,5 +13,6 @@ jobs:
 
       - name: 정상 작동 여부 확인을 위한 빌드
         run : |
+          cd moodbook-app
           npm install
           npm run build
