@@ -2,7 +2,7 @@ name: Mac SSH 연결 테스트
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   ssh_test:
