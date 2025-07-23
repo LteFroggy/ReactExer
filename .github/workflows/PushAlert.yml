@@ -11,12 +11,20 @@ on:
 # 실행할 작업
 jobs:
   notify-discord:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest   # 실행 OS 환경 지정!
     steps:
-      - name: Send Discord Webhook    # 선택적이다. Job의 이름을 지정한다.
+      - name: 디스코드 성공 알림 전송
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
-               -d '{"content":"🚀 `${{ github.ref_name }}` 브랜치에 코드가 푸시되었습니다!"}' \
+               -d '{"content":"🚀 `${{ github.ref_name }}` 빌드가 실패했습니다. 로그를 확인해주세요."}' \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: 디스코드 실패 알림 전송
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{"content":"🚀 `${{ github.ref_name }}` 성공적으로 빌드했고, EC2에 배포했습니다!"}' \
                ${{ secrets.DISCORD_WEBHOOK_URL }}
