@@ -15,7 +15,7 @@ jobs:
 
       - name: Mac의 SSH에 접속 시도하기
         run: |
-          ssh -i ./keypair.pem ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com
+          ssh -o StrictHostKeyChecking=no -i ./keypair.pem ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com
 
       - name: 경로 이동 후 폴더 만들기
         run: |
