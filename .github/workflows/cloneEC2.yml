@@ -1,8 +1,9 @@
-name: Mac SSH 연결 테스트
+name: Mac SSH 파일 복사
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["빌드가 잘 되는지 테스트"]
+    types:
+      - completed
 
 jobs:
   ssh_test:

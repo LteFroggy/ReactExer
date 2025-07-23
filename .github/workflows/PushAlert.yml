@@ -3,9 +3,10 @@ name: Discord Webhook on Push
 
 # 이벤트 트리거 설정
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Mac SSH 파일 복사"]
+    types:
+      - completed
 
 # 실행할 작업
 jobs:
