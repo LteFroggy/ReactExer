@@ -1,4 +1,4 @@
-name: Mac SSH 파일 복사
+name: 2. Mac SSH 파일 복사
 on:
   workflow_run:
     workflows: ["빌드가 잘 되는지 테스트"]

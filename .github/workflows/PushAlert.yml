@@ -1,5 +1,5 @@
 # Github UI에서 표시될 워크플로우 이름
-name: Discord Webhook on Push
+name: 3. Discord Webhook on Push
 
 # 이벤트 트리거 설정
 on:

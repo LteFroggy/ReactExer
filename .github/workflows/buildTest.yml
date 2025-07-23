@@ -1,4 +1,4 @@
-name: 빌드가 잘 되는지 테스트
+name: 1. 빌드가 잘 되는지 테스트
 on:
   push:
     branches:
