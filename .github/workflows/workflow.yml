@@ -1,0 +1,20 @@
+name: Mac SSH 연결 테스트
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  ssh_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mac의 SSH에 접속 시도하기
+        run: |
+          ssh -i ${{ secrets.EC2_SSH_KEY }} ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com
+
+      - name: 경로 이동 후 폴더 만들기
+        run: |
+          cd ~/
+          mkdir madeByGithubActions
+
+
