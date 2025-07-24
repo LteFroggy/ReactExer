@@ -46,6 +46,7 @@ jobs:
           npm run build
           cd ..
           echo "docker 띄우는 중"
-          docker compose up -d
+          sudo systemctl start docker
+          sudo docker compose up -d
           echo "작업 완료"
           EOF
