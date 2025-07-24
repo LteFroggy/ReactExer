@@ -32,6 +32,7 @@ jobs:
           << 'EOF'
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          corepack enable
           cd documents
           if [ -d "ReactExer" ]; then
             echo "기존 디렉토리 존재하므로, reset만 하기"
@@ -46,7 +47,7 @@ jobs:
           echo "빌드 진행중"
           cd moodbook-app
           sudo chown -R ubuntu:ubuntu dist
-          /home/ubuntu/.nvm/versions/node/v22.17.1/bin/npm run build
+          yarn build
           cd ..
           echo "npm 경로 확인 : " $(which npm) 
           echo "node 경로 확인 : " $(which node)
