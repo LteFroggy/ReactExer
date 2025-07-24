@@ -43,6 +43,7 @@ jobs:
           fi
           echo "빌드 진행중"
           cd moodbook-app
+          sudo chown -R ubuntu:ubuntu dist
           npm run build
           cd ..
           echo "docker 띄우는 중"
