@@ -30,8 +30,22 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i ./keypair.pem ec2-user@ec2-3-35-16-187.ap-northeast-2.compute.amazonaws.com \
           << 'EOF'
-          cd ~/
-          echo $(pwd)
-          mkdir madeByGithubActions
-          echo $(ls)
+          cd Documents
+          if [ -d "ReactExer" ]; then
+            echo "기존 디렉토리 존재하므로, reset만 하기"
+            cd ReactExer
+            git fetch origin
+            git reset --hard origin/main
+          else
+            echo "기존 디렉토리가 없으므로, 새로 다운받음"
+            git clone https://github.com/LteFroggy/ReactExer.git
+            cd ReactExer
+          fi
+          echo "빌드 진행중"
+          cd moodbook-app
+          npm run build
+          cd ..
+          echo "docker 띄우는 중"
+          docker compose up -d
+          echo "작업 완료"
           EOF

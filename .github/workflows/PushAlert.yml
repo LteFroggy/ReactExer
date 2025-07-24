@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest   # 실행 OS 환경 지정!
     steps:
       - name: 디스코드 성공 알림 전송
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
@@ -22,7 +22,7 @@ jobs:
                ${{ secrets.DISCORD_WEBHOOK_URL }}
 
       - name: 디스코드 실패 알림 전송
-        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
