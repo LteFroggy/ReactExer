@@ -47,8 +47,8 @@ jobs:
           /home/ubuntu/.nvm/versions/node/v22.17.1/bin/npm run build
           cd ..
           echo "npm 경로 확인 : " $(which npm) 
-          echo "node 경로 확인 : " $(which node) 
-          echo "docker 띄우는 중"
+          echo "node 경로 확인 : " $(which node)
+          echo "docker 경로 확인 : " $(which docker) 
           sudo systemctl start docker
           sudo docker compose up -d
           echo "작업 완료"
