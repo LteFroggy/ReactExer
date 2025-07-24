@@ -41,7 +41,7 @@ jobs:
             git clone https://github.com/LteFroggy/ReactExer.git
             cd ReactExer
           fi
-          echo "빌드 진행중"
+            echo "빌드 진행중"
           cd moodbook-app
           npm run build
           cd ..
