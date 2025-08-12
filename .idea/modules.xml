@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ReactExer.iml" filepath="$PROJECT_DIR$/.idea/ReactExer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ReactExer.iml" filepath="$PROJECT_DIR$/ReactExer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/everyday/everyday.iml" filepath="$PROJECT_DIR$/everyday/everyday.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moodbook-app/moodbook-app.iml" filepath="$PROJECT_DIR$/moodbook-app/moodbook-app.iml" />
     </modules>
   </component>
 </project>

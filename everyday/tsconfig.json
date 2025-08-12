@@ -3,5 +3,12 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+
+  "compilerOptions": {
+    "jsx": "react-jsx", // 또는 "react" (버전에 따라 다름)
+    "module": "esnext",
+    "target": "es6",
+    "moduleResolution": "node",
+  }
 }
