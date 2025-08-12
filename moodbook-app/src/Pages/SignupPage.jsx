@@ -32,7 +32,7 @@ function SignupPage() {
 
     try {
       // POST 요청을 통해 JSON 형식의 데이터를 서버로 전송합니다.
-      const response = await fetch("http://localhost:8080/api/oauth/tempSigUup",
+      const response = await fetch(import.meta.env.VITE_ENDPOINT + "/api/oauth/tempSigUup",
           {
             method: "POST",
             headers: {

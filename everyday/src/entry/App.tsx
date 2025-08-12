@@ -16,7 +16,7 @@ export const App = () => {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/react' element={<ReactPage />} />
-        <Route path='/chat' element={<ChatPage />} />
+        <Route path='/chat/:roomId' element={<ChatPage />} />
         <Route path='/settoken' element={<SetTokenPage />} />
         <Route path='/socket' element={<SocketPage setIsConnected={setIsConnected} />} />
       </Routes>
