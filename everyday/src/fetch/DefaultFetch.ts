@@ -15,13 +15,14 @@ export const defaultFetch = async (url: string, options: RequestInit = {}) => {
     headers
   });
 
-  console.log("[defaultFetch] : 요청 완료, 결과는 " + response.statusText);
+  console.log("[defaultFetch] : 요청 완료");
 
-  if (!response.ok) {
+  if (response.status !== 200 && response.status !== 204) {
     // 에러 핸들링 예: 401 Unauthorized
     console.error(`[Default Fetch] : 에러 발생 ${response.status}: ${response.statusText}`);
     throw new Error("요청 실패");
   }
 
-  return response.json();
+  if (response.status !== 204)
+    return response.json();
 };
