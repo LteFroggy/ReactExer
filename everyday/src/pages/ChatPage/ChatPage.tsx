@@ -18,6 +18,7 @@ export const ChatPage = () => {
   const {roomId} = useParams<{ roomId: string }>();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [newMessage, setNewMessage] = useState("");
+  const [showLoadAll, setShowLoadAll] = useState(false);
 
   const navigate = useNavigate();
 
@@ -53,6 +54,9 @@ export const ChatPage = () => {
       // 과거 메시지 불러오기
       const history: ChatMessage[] = await defaultFetch(`/api/chat/history/${roomId}`);
       setMessages(history);
+      if (Array.isArray(history) && history.length === 20) {
+        setShowLoadAll(true);
+      }
 
       console.log("[ChatPage] - handleSubscribe : 과거 메세지 세팅 완료")
 
@@ -78,6 +82,18 @@ export const ChatPage = () => {
     }
   }, [])
 
+  const handleLoadAllHistory = async () => {
+    if (!roomId) return;
+    try {
+      const all: ChatMessage[] = await defaultFetch(`/api/chat/history/${roomId}/all`);
+      setMessages(all);
+      setShowLoadAll(false);
+    } catch (e) {
+      console.error("[ChatPage] - handleLoadAllHistory error", e);
+      alert("전체 채팅을 불러오지 못했습니다.");
+    }
+  };
+
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newMessage.trim() || !roomId) return;
@@ -91,6 +107,14 @@ export const ChatPage = () => {
           <h2 className="chat-room-title">채팅방 #{roomId}</h2>
 
           <div className="chat-messages-container">
+            {showLoadAll && (
+              <div className="load-all-container">
+                <button type="button" className="load-all-button" onClick={handleLoadAllHistory}>
+                  모든 채팅 불러오기
+                </button>
+              </div>
+            )}
+            {/* styles: .load-all-container { text-align: center; margin: 8px 0; } .load-all-button { cursor: pointer; } */}
             {messages.map((msg, idx) => (
                 <div key={idx} className="message-bubble">
                   <span className="message-sender">{msg.sender || "??"}:</span>
