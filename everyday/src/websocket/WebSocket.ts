@@ -36,8 +36,9 @@ export const activateStompClient = () => {
 
 // 채팅방 구독하기
 export const subscribeToChatRoom = (roomId: string, onMessageReceived: (message: any) => void) => {
-  return stompClient.subscribe(`/topic/chat/${roomId}`, (message) => {
-    console.log('메세지 수신 : ', message.body);
+  return stompClient.subscribe(`/topic/chat/${roomId}`, (message) =>
+  {
+    console.log('Broadcast 채널로 메세지 수신 : ', message.body);
     onMessageReceived(JSON.parse(message.body));
   });
 };
@@ -49,7 +50,7 @@ export const subscribeNotification = (teamList : number[]) => {
   // 이 경로는 보통 특정 사용자에게만 보내는 알림을 위해 사용됩니다.
   stompClient.subscribe(`/user/queue/notification`, (message) => {
     // 알림 메시지를 받으면 콘솔에 로그를 남깁니다.
-    console.log('알림 수신 : ', message.body);
+    console.log('개인 채널로 알림 수신 : ', message.body);
 
     // 수신된 메시지를 사용하여 토스트 알림을 띄웁니다.
     // message.body에 실제 알림 내용이 담겨 있습니다.
@@ -67,6 +68,7 @@ export const subscribeNotification = (teamList : number[]) => {
   // 팀의 토픽에 해당되는 채널들을 구독합니다
   for (const team of teamList) {
     stompClient.subscribe(`/topic/team/` + team, (message) => {
+      console.log('팀 채널로 알림 수신 : ', message.body);
       onNotify(message.body);
     })
     console.log(team + "번 팀 메세지 구독 완료")
